@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "omniauth", "~> 2.0"
 
   gem.add_development_dependency "bundler",                        "~> 2.0"
+  gem.add_development_dependency "rake",                           "~> 13.0"
   gem.add_development_dependency "omniauth-rails_csrf_protection", "~> 1.0"
   gem.add_development_dependency "rack-test",                      "~> 2.0"
   gem.add_development_dependency "rspec",                          "~> 3.0"
@@ -17,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["mike@berkman.co"]
   gem.description   = "A YNAB OAuth2 strategy for OmniAuth."
   gem.summary       = gem.description
-  gem.homepage      = "https://github.com/berkman/omniauth-ynab"
+  gem.homepage      = "https://github.com/tataihono/omniauth-ynab"
   gem.licenses      = %w[MIT]
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").collect { |f| File.basename(f) }
