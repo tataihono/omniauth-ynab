@@ -14,8 +14,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rubocop",                        "~> 1.0"
   gem.add_development_dependency "webmock",                        "~> 3.0"
 
-  gem.authors       = ["Mike Berkman"]
-  gem.email         = ["mike@berkman.co"]
+  gem.authors       = ["tataihono"]
+  gem.email         = ["tataihono.nikora@gmail.com"]
   gem.description   = "A YNAB OAuth2 strategy for OmniAuth."
   gem.summary       = gem.description
   gem.homepage      = "https://github.com/tataihono/omniauth-ynab"
