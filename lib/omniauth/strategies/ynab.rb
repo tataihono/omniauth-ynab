@@ -18,7 +18,7 @@ module OmniAuth
       option :client_id, nil
       option :client_secret, nil
       option :client_options, {
-        :site => "https://app.youneedabudget.com"
+        :site => "https://app.youneedabudget.com",
       }
       option :authorize_params, {}
       option :authorize_options, %i[scope state]
@@ -123,7 +123,7 @@ module OmniAuth
         client.auth_code.get_token(
           verifier,
           {:redirect_uri => callback_url}.merge(token_params.to_hash(:symbolize_keys => true)),
-          deep_symbolize(options.auth_token_params)
+          deep_symbolize(options.auth_token_params),
         )
       end
 
