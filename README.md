@@ -1,7 +1,7 @@
 # omniauth-v2-ynab
 
 [![Gem Version](https://img.shields.io/gem/v/omniauth-v2-ynab.svg)](https://rubygems.org/gems/omniauth-v2-ynab)
-[![CI](https://github.com/tataihono/omniauth-ynab/actions/workflows/ci.yml/badge.svg)](https://github.com/tataihono/omniauth-ynab/actions/workflows/ci.yml)
+[![CI](https://github.com/tataihono/omniauth-v2-ynab/actions/workflows/ci.yml/badge.svg)](https://github.com/tataihono/omniauth-v2-ynab/actions/workflows/ci.yml)
 
 OmniAuth strategy for [YNAB (You Need A Budget)](https://www.youneedabudget.com/) OAuth2.
 
@@ -137,7 +137,7 @@ After a successful callback, `request.env["omniauth.auth"].credentials` contains
 ### Setup
 
 ```sh
-git clone https://github.com/tataihono/omniauth-ynab.git
+git clone https://github.com/tataihono/omniauth-v2-ynab.git
 cd omniauth-ynab
 bundle install
 ```

@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["tataihono.nikora@gmail.com"]
   gem.description   = "A YNAB OAuth2 strategy for OmniAuth."
   gem.summary       = gem.description
-  gem.homepage      = "https://github.com/tataihono/omniauth-ynab"
+  gem.homepage      = "https://github.com/tataihono/omniauth-v2-ynab"
   gem.licenses      = %w[MIT]
   gem.metadata      = {"rubygems_mfa_required" => "true"}
 
