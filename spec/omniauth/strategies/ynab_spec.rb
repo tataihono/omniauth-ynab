@@ -35,8 +35,8 @@ describe OmniAuth::Strategies::YNAB do
     end
 
     it "deep-symbolizes nested client_options" do
-      instance = subject.new(app, :client_options => {"ssl" => {"ca_path" => "/etc/ssl/certs"}})
-      expect(instance.client.options[:ssl]).to eq(:ca_path => "/etc/ssl/certs")
+      instance = subject.new(app, :client_options => {"connection_opts" => {"timeout" => 30}})
+      expect(instance.client.options[:connection_opts]).to eq(:timeout => 30)
     end
   end
 
@@ -117,9 +117,13 @@ describe OmniAuth::Strategies::YNAB do
   describe "#callback_phase" do
     subject { fresh_strategy }
 
+    def stub_session(instance, data = {})
+      instance.instance_variable_set(:@env, {"rack.session" => data})
+    end
+
     it "calls fail! with the client error when the request contains an error" do
       instance = subject.new("abc", "def")
-      instance.session["omniauth.state"] = "abc123"
+      stub_session(instance, "omniauth.state" => "abc123")
       allow(instance).to receive(:request) do
         double("Request", :params => {"error_reason" => "user_denied", "error" => "access_denied", "state" => "abc123"})
       end
@@ -129,6 +133,7 @@ describe OmniAuth::Strategies::YNAB do
 
     it "calls fail! with :csrf_detected when state is missing" do
       instance = subject.new("abc", "def")
+      stub_session(instance)
       allow(instance).to receive(:request) do
         double("Request", :params => {"code" => "abc123", "state" => ""})
       end
@@ -138,7 +143,7 @@ describe OmniAuth::Strategies::YNAB do
 
     it "calls fail! with :csrf_detected when state does not match the session" do
       instance = subject.new("abc", "def")
-      instance.session["omniauth.state"] = "correct_state"
+      stub_session(instance, "omniauth.state" => "correct_state")
       allow(instance).to receive(:request) do
         double("Request", :params => {"code" => "abc123", "state" => "wrong_state"})
       end
@@ -148,7 +153,7 @@ describe OmniAuth::Strategies::YNAB do
 
     it "checks CSRF state before checking for an error param" do
       instance = subject.new("abc", "def")
-      instance.session["omniauth.state"] = "correct_state"
+      stub_session(instance, "omniauth.state" => "correct_state")
       allow(instance).to receive(:request) do
         double("Request", :params => {"error" => "access_denied", "state" => "wrong_state"})
       end
