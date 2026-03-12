@@ -7,7 +7,7 @@ OmniAuth strategy for [YNAB (You Need A Budget)](https://www.youneedabudget.com/
 
 Compatible with **omniauth 2.x**, **oauth2 2.x**, and **omniauth-rails_csrf_protection 1.x**.
 
-> **Note:** This is a maintained fork of the original [`omniauth-ynab`](https://rubygems.org/gems/omniauth-ynab) gem, updated for the omniauth 2.x / oauth2 2.x ecosystem.
+> **Note:** This is a maintained fork of the original [`omniauth-ynab`](https://rubygems.org/gems/omniauth-ynab) gem, updated for the omniauth 2.x / oauth2 2.x ecosystem. The version starts at **2.0.0** so that projects upgrading from `omniauth-ynab` can switch gems and bump to `>= 2.0` without a version conflict.
 
 ---
 
