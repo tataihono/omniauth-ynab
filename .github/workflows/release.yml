@@ -20,7 +20,7 @@ jobs:
     # Only run when CI passed, and not on auto-bump commits (loop prevention).
     if: |
       github.event.workflow_run.conclusion == 'success' &&
-      !startsWith(github.event.workflow_run.head_commit.message, 'Bump version to')
+      !startsWith(github.event.workflow_run.head_commit.message, '[auto] Bump version to')
     runs-on: ubuntu-latest
     environment: rubygems
 
@@ -105,5 +105,5 @@ jobs:
         if: steps.version.outputs.bumped == 'true'
         run: |
           git add lib/omniauth-ynab/version.rb
-          git commit -m "Bump version to ${{ steps.version.outputs.version }}"
+          git commit -m "[auto] Bump version to ${{ steps.version.outputs.version }}"
           git push origin HEAD:main
