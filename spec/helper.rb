@@ -5,7 +5,7 @@ require "rspec"
 require "rack/test"
 require "webmock/rspec"
 require "omniauth"
-require "omniauth-ynab"
+require "omniauth-v2-ynab"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |c|

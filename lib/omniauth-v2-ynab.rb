@@ -1,3 +1,2 @@
-# frozen_string_literal: true
-
-require "omniauth-ynab"
+require "omniauth-v2-ynab/version"
+require "omniauth/strategies/ynab"

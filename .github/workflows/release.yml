@@ -44,7 +44,7 @@ jobs:
       - name: Resolve version
         id: version
         run: |
-          CURRENT=$(ruby -e "require_relative 'lib/omniauth-ynab/version'; puts OmniAuth::YNAB::VERSION")
+          CURRENT=$(ruby -e "require_relative 'lib/omniauth-v2-ynab/version'; puts OmniAuth::YNAB::VERSION")
           LATEST_TAG=$(git tag -l "v*" --sort=-version:refname | head -1)
           LATEST=${LATEST_TAG#v}
           [ -z "$LATEST" ] && LATEST="0.0.0"
@@ -61,7 +61,7 @@ jobs:
           elif [ "$CURRENT" = "$LATEST" ]; then
             IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
             NEW="$MAJOR.$((MINOR + 1)).0"
-            sed -i "s/VERSION = \"$CURRENT\".freeze/VERSION = \"$NEW\".freeze/" lib/omniauth-ynab/version.rb
+            sed -i "s/VERSION = \"$CURRENT\".freeze/VERSION = \"$NEW\".freeze/" lib/omniauth-v2-ynab/version.rb
             echo "version=$NEW" >> "$GITHUB_OUTPUT"
             echo "bumped=true" >> "$GITHUB_OUTPUT"
             echo "skip=false" >> "$GITHUB_OUTPUT"
@@ -102,6 +102,6 @@ jobs:
       - name: Commit version bump
         if: steps.version.outputs.bumped == 'true'
         run: |
-          git add lib/omniauth-ynab/version.rb
+          git add lib/omniauth-v2-ynab/version.rb
           git commit -m "[auto] Bump version to ${{ steps.version.outputs.version }}"
           git push origin HEAD:main

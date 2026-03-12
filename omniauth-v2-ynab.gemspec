@@ -1,6 +1,6 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "omniauth-ynab/version"
+require "omniauth-v2-ynab/version"
 
 Gem::Specification.new do |gem|
   gem.add_dependency "oauth2",   "~> 2.0"
